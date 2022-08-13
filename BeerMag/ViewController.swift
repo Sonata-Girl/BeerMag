@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     let minusButton2  = UIButton()
     let minusButton3  = UIButton()
   
+//    let labelsArray : [UILabel]! = [UILabel()
+    
     let plusButton1 = UIButton()
     let plusButton2 = UIButton()
     let plusButton3 = UIButton()
@@ -36,6 +38,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         
         Manager.shared.startNewDay(bar: bar)
         
@@ -143,38 +150,16 @@ class ViewController: UIViewController {
     @IBAction func plus(sender: UIButton) {
         let changeName = Manager.shared.plus(bar: bar, index: sender.tag, order: &order)
         if changeName {
-                changeNames(indexBeer: sender.tag)
+            updateNames(index: sender.tag, updateTitles: true)
         }
     }
     @IBAction func minus(sender: UIButton) {
         let changeName = Manager.shared.minus(bar: bar, index: sender.tag, order: &order)
-//        let remainder = bar.countBeer(beer: bar.beers[sender.tag])
-//        let orderCount = order[bar.beers[sender.tag]] ?? 0
-//
-//        if orderCount > 0 {
-//             order[bar.beers[sender.tag]] = orderCount - 1
-//            bar.counts[sender.tag] = remainder + 1
         if changeName {
-            changeNames(indexBeer: sender.tag)
+            updateNames(index: sender.tag, updateTitles: true)
         }
     }
-    
-    func changeNames(indexBeer: Int) {
-        let textTitle = getNameBeer(bar: bar, index: indexBeer)
-        let newOrderCount = "\(order[bar.beers[indexBeer]] ?? 0)"
-        
-        if indexBeer == 0 {
-            changeName(label: titleBeer1Top, text: textTitle)
-            changeName(label: titleBeer1Count, text: newOrderCount)
-        } else if indexBeer == 1 {
-            changeName(label: titleBeer2Top, text: textTitle)
-            changeName(label: titleBeer2Count, text: newOrderCount)
-        } else {
-            changeName(label: titleBeer3Top, text: textTitle)
-            changeName(label: titleBeer3Count, text: newOrderCount)
-        }
-    }
-    
+
     @IBAction func startDay(sender: UIButton) {
         Manager.shared.startNewDay(bar: bar)
         updatingScreen()
@@ -188,31 +173,36 @@ class ViewController: UIViewController {
     
     @IBAction func sell(sender: UIButton) {
         mainLabel.text = Manager.shared.reduceCountBeer(bar: bar, beersSells: order)
+        order = [Beer: Int]()
         updatingScreen(updateAll: false)
+    }
+
+    
+    func updateNames(index: Int, updateTitles: Bool) {
+        let orderText = "\(order[bar.beers[index]] ?? 0)"
+        let textTitle = getNameBeer(bar: bar, index: index)
+        if index == 0 {
+            if updateTitles {
+                changeName(label: titleBeer1Top, text: textTitle)
+            }
+            changeName(label: titleBeer1Count, text: orderText)
+        } else if index == 1 {
+            if updateTitles {
+                changeName(label: titleBeer2Top, text: textTitle)
+            }
+            changeName(label: titleBeer2Count, text: orderText)
+        } else {
+            if updateTitles {
+                changeName(label: titleBeer3Top, text: textTitle)
+            }
+            changeName(label: titleBeer3Count, text: orderText)
+        }
     }
     
     func updatingScreen(updateAll: Bool = true) {
         for i in 0..<3 {
-            let textTitle = getNameBeer(bar: bar, index: i)
-            let orderCount = "\(0)"
             order[bar.beers[i]] = 0
-            
-            if i == 0 {
-                if updateAll {
-                    changeName(label: titleBeer1Top, text: textTitle)
-                }
-                changeName(label: titleBeer1Count, text: orderCount)
-            } else if i == 1 {
-                if updateAll {
-                    changeName(label: titleBeer2Top, text: textTitle)
-                }
-                changeName(label: titleBeer2Count, text: orderCount)
-            } else {
-                if updateAll {
-                    changeName(label: titleBeer3Top, text: textTitle)
-                }
-                changeName(label: titleBeer3Count, text: orderCount)
-            }
+            updateNames(index: i, updateTitles: updateAll)
         }
     }
     

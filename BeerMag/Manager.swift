@@ -52,19 +52,12 @@ class Manager {
         var textSelling = ""
         var sumCost = 0
         for beer in beersSells.keys {
-            let indexBeer = bar.beers.firstIndex(of: beer) ?? 0
-            let currentCount = bar.counts[indexBeer]
-            var newCount = 0
-            
+
             let sellCount = beersSells[beer]!
-            if currentCount - sellCount < 0 {
-                newCount = 0
-            } else {
-                newCount = currentCount - sellCount
-            }
+
             sumCost += sellCount * beer.cost
             bar.dailyTotal += sumCost
-            bar.counts[indexBeer] = newCount
+           
             let text = "\(sellCount) * \(beer.cost)$ - \(beer.name)"
             if sellCount > 0 {
                 textSelling += textSelling == "" ? text + "\n" : text + "\n"

@@ -1,5 +1,5 @@
 //
-//  daylyBar.swift
+//  Bar.swift
 //  BeerMag
 //
 //  Created by Sonata Girl on 13.08.2022.
