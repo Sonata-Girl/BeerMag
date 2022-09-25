@@ -8,21 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		6736017828A7B39900F56852 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6736017728A7B39900F56852 /* AppDelegate.swift */; };
-		6736017A28A7B39900F56852 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6736017928A7B39900F56852 /* SceneDelegate.swift */; };
-		6736017C28A7B39900F56852 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6736017B28A7B39900F56852 /* ViewController.swift */; };
 		6736017F28A7B39900F56852 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6736017D28A7B39900F56852 /* Main.storyboard */; };
 		6736018128A7B39A00F56852 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6736018028A7B39A00F56852 /* Assets.xcassets */; };
 		6736018428A7B39A00F56852 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6736018228A7B39A00F56852 /* LaunchScreen.storyboard */; };
 		6736018C28A7B41000F56852 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6736018B28A7B41000F56852 /* Manager.swift */; };
 		6736018E28A7BA8100F56852 /* Beer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6736018D28A7BA8100F56852 /* Beer.swift */; };
 		6736019028A7BB7C00F56852 /* Bar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6736018F28A7BB7C00F56852 /* Bar.swift */; };
+		673D5D2428D3A502002E6B4D /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673D5D2328D3A502002E6B4D /* CloseButton.swift */; };
+		673D5D2A28D3A751002E6B4D /* ContainerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673D5D2928D3A751002E6B4D /* ContainerVC.swift */; };
+		673D5D2D28D3A760002E6B4D /* MenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673D5D2B28D3A75F002E6B4D /* MenuVC.swift */; };
+		673D5D2E28D3A760002E6B4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 673D5D2C28D3A760002E6B4D /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6736017428A7B39900F56852 /* BeerMag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeerMag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6736017728A7B39900F56852 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6736017928A7B39900F56852 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		6736017B28A7B39900F56852 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6736017E28A7B39900F56852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6736018028A7B39A00F56852 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6736018328A7B39A00F56852 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -30,6 +30,10 @@
 		6736018B28A7B41000F56852 /* Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Manager.swift; sourceTree = "<group>"; };
 		6736018D28A7BA8100F56852 /* Beer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beer.swift; sourceTree = "<group>"; };
 		6736018F28A7BB7C00F56852 /* Bar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bar.swift; sourceTree = "<group>"; };
+		673D5D2328D3A502002E6B4D /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		673D5D2928D3A751002E6B4D /* ContainerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerVC.swift; sourceTree = "<group>"; };
+		673D5D2B28D3A75F002E6B4D /* MenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuVC.swift; sourceTree = "<group>"; };
+		673D5D2C28D3A760002E6B4D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,10 +67,10 @@
 			isa = PBXGroup;
 			children = (
 				6736017728A7B39900F56852 /* AppDelegate.swift */,
-				6736017928A7B39900F56852 /* SceneDelegate.swift */,
-				6736017B28A7B39900F56852 /* ViewController.swift */,
+				673D5D2F28D3ABD4002E6B4D /* New Group */,
 				6736018D28A7BA8100F56852 /* Beer.swift */,
 				6736018F28A7BB7C00F56852 /* Bar.swift */,
+				673D5D2328D3A502002E6B4D /* CloseButton.swift */,
 				6736017D28A7B39900F56852 /* Main.storyboard */,
 				6736018B28A7B41000F56852 /* Manager.swift */,
 				6736018028A7B39A00F56852 /* Assets.xcassets */,
@@ -74,6 +78,16 @@
 				6736018528A7B39A00F56852 /* Info.plist */,
 			);
 			path = BeerMag;
+			sourceTree = "<group>";
+		};
+		673D5D2F28D3ABD4002E6B4D /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				673D5D2928D3A751002E6B4D /* ContainerVC.swift */,
+				673D5D2B28D3A75F002E6B4D /* MenuVC.swift */,
+				673D5D2C28D3A760002E6B4D /* ViewController.swift */,
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,11 +161,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6736017C28A7B39900F56852 /* ViewController.swift in Sources */,
 				6736017828A7B39900F56852 /* AppDelegate.swift in Sources */,
+				673D5D2A28D3A751002E6B4D /* ContainerVC.swift in Sources */,
 				6736018E28A7BA8100F56852 /* Beer.swift in Sources */,
-				6736017A28A7B39900F56852 /* SceneDelegate.swift in Sources */,
+				673D5D2E28D3A760002E6B4D /* ViewController.swift in Sources */,
 				6736018C28A7B41000F56852 /* Manager.swift in Sources */,
+				673D5D2D28D3A760002E6B4D /* MenuVC.swift in Sources */,
+				673D5D2428D3A502002E6B4D /* CloseButton.swift in Sources */,
 				6736019028A7BB7C00F56852 /* Bar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

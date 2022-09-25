@@ -7,8 +7,24 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol ViewControllerDelegate: AnyObject {
+    func toggleMenu()
+}
 
+class ViewController: UIViewController, MenuVCDelegate {
+    
+    weak var delegate: ViewControllerDelegate?
+    var blurView = UIVisualEffectView()
+     
+    private let menuButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "menu"), for: .normal)
+        button.titleLabel?.backgroundColor = .orange
+
+       return button
+    }()
+    
     let minusButton1  = UIButton()
     let minusButton2  = UIButton()
     let minusButton3  = UIButton()
@@ -38,34 +54,34 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupUI()
+        
+        let blurEffect = UIBlurEffect(style: .dark)
+        blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = view.bounds
+        blurView.isHidden = true
+        view.addSubview(blurView)
+        
+        self.view.addSubview(menuButton)
+        NSLayoutConstraint.activate([
+            menuButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            menuButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            menuButton.heightAnchor.constraint(equalToConstant: 40), // высота
+            menuButton.widthAnchor.constraint(equalToConstant: 40)
+        ])
+        menuButton.addTarget(self, action: #selector(menuButtonAction), for: .touchUpInside)
 
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
+   
+    
+    func setupUI() {
         Manager.shared.startNewDay(bar: bar)
         
         view.backgroundColor = #colorLiteral(red: 0.9984562993, green: 0.9787891507, blue: 0.9253073335, alpha: 1)
         
-//        var labelYStep = 50
-//        var countYStep = 90
-//
-//        let labels = [titleBeer1Top, titleBeer2Top, titleBeer3Top]
-//        let countlabels = [titleBeer1Count, titleBeer2Count, titleBeer3Count]
-//        let minusButtons = [minusButton1, minusButton2, minusButton3]
-//        let plusButtons = [plusButton1, plusButton2, plusButton3]
-//
-//        for (index, element) in bar.beers.enumerated() {
-//            setLabel(label: labels[index], text: element.name, x: 100, y: labelYStep, w: 200, textCenter: true)
-//            setLabel(label: countlabels[index], text: "0", x: 190, y: countYStep)
-//            setButton(button: minusButtons[index], titleName: "-", x: 125, y: countYStep)
-//            setButton(button: plusButtons[index], titleName: "+", x: 230, y: countYStep)
-//
-//            labelYStep += 80
-//            countYStep += 80
-//
-//        }
+
         let fontlabelsButtons = UIFont.systemFont(ofSize: 30)
         setLabel(label: titleBeer1Top, text: getNameBeer(bar: bar, index: 0), x: 50, y: 50, w: 300, font: fontlabelsButtons, textCenter: true, textColor: .systemRed)
         setLabel(label: titleBeer1Count, text: "0", x: 170, y: 90, w: 70, textCenter: true)
@@ -106,6 +122,8 @@ class ViewController: UIViewController {
         endButton.addTarget(self, action: #selector(endDay), for: .touchUpInside)
       
         sellButton.addTarget(self, action: #selector(sell), for: .touchUpInside)
+        
+        
     }
 
     
@@ -208,6 +226,19 @@ class ViewController: UIViewController {
     
     func getNameBeer(bar: Bar, index:Int) -> String {
         return "\(bar.beers[index].name) \(bar.counts[index]), \(bar.beers[index].cost)$"
+    }
+    
+    
+    @objc func menuButtonAction(_ sender: UIButton) {
+        delegate?.toggleMenu()
+        self.blurView.isHidden = false
+    }
+    
+    func changeColor(color: UIColor? = nil) {
+        self.blurView.isHidden = true
+        guard let newColor = color else {return}
+        
+        self.view.backgroundColor = newColor
     }
 }
 
